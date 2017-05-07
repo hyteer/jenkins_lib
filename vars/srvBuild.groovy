@@ -5,9 +5,9 @@ def call(body) {
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = config
     body()
-    def buildNode = config.node
-    def GIT_OPS_URL = config.gitUrl
-    def GIT_SRV_URL =  "https://github.com/hyteer/${config.repoName}.git"
+    //def buildNode = config.node
+    //def GIT_OPS_URL = config.gitUrl
+    //def GIT_SRV_URL =  "https://github.com/hyteer/${config.repoName}.git"
     println "Build Node: ${buildNode}"
 
 
@@ -25,14 +25,16 @@ def call(body) {
         def testName = config.repoName
         println "TestName: ${testName}"
         sh 'printenv'
-        sh 'echo "Currdir:${PWD}"'
-        sh 'echo "YT-srv:${srvName}"'
-        echo "MyService: ${config.srvName}"
-        echo "MyRepo: ${config.repoName}"
+        //sh 'echo "Currdir:${PWD}"'
+        //sh 'echo "YT-srv:${srvName}"'
+        //echo "MyService: ${config.srvName}"
+        //echo "MyRepo: ${config.repoName}"
+        echo "Service Name: ${config.srvName}"
+        echo "Repos: ${config.repoName}"
         //sh "ls"
         //git url: "https://github.com/hyteer/${config.repoName}.git"
         echo "===Checkout service repo..."
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${srvName}"]], submoduleCfg: [], userRemoteConfigs: [[url: GIT_SRV_URL]]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: config.srvName]], submoduleCfg: [], userRemoteConfigs: [[url: config.gitSrvUrl]]])
         //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: config.srvName]], submoduleCfg: [], userRemoteConfigs: [[url: GIT_SRV_URL]]])
 
         //mail to: "...", subject: "${config.name} plugin build", body: "..."
