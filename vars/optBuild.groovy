@@ -5,7 +5,7 @@ def call(body) {
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = config
     body()
-    def buildNode = confi.node
+    def buildNode = config.node
     def GIT_OPS_URL = config.gitUrl
     def GIT_SRV_URL =  "https://github.com/hyteer/${config.repoName}.git"
     println "Build Node: ${buildNode}"
