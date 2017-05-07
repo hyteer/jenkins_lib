@@ -14,7 +14,7 @@ def call(body) {
         echo "MyService: ${config.srvName}"
         echo "MyRepo: ${config.repoName}"
         //sh "ls"
-        git url: "https://github.com/hyteer/${config.GIT_URL}.git"
+        git url: "https://github.com/hyteer/${config.repoName}.git"
 
         //mail to: "...", subject: "${config.name} plugin build", body: "..."
     }
