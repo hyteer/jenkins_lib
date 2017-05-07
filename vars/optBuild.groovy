@@ -31,7 +31,7 @@ def call(body) {
         //sh "ls"
         //git url: "https://github.com/hyteer/${config.repoName}.git"
         echo "===Checkout service repo..."
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: config.srvName]], submoduleCfg: [], userRemoteConfigs: [[url: GIT_SRV_URL]]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${srvName}"]], submoduleCfg: [], userRemoteConfigs: [[url: GIT_SRV_URL]]])
         //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: config.srvName]], submoduleCfg: [], userRemoteConfigs: [[url: GIT_SRV_URL]]])
 
         //mail to: "...", subject: "${config.name} plugin build", body: "..."
