@@ -13,6 +13,8 @@ def call(body) {
         //git url: "https://github.com/jenkinsci/${config.name}-plugin.git"
         def testName = config.repoName
         println "TestName: ${testName}"
+        sh 'printenv'
+        sh '''echo "===YT testName is: ${testName}"'''
         echo "MyService: ${config.srvName}"
         echo "MyRepo: ${config.repoName}"
         //sh "ls"
