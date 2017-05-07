@@ -11,8 +11,9 @@ def call(body) {
 
         //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: srvName]], submoduleCfg: [], userRemoteConfigs: [[url: gitUrl]]])
         //git url: "https://github.com/jenkinsci/${config.name}-plugin.git"
-        sh 'echo "MyService: ${config.srvName}"'
-        sh 'echo "MyRepo: ${config.repoName}"'
+        echo "MyService: ${config.srvName}"
+        echo "MyRepo: ${config.repoName}"
+        //sh "ls"
         git url: "https://github.com/hyteer/${config.GIT_URL}.git"
 
         //mail to: "...", subject: "${config.name} plugin build", body: "..."
