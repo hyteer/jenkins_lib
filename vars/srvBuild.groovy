@@ -8,7 +8,7 @@ def call(body) {
     //def buildNode = config.node
     //def GIT_OPS_URL = config.gitUrl
     //def GIT_SRV_URL =  "https://github.com/hyteer/${config.repoName}.git"
-    println "Build Node: ${buildNode}"
+    println "Build Node: ${config.node}"
 
 
     // now build, based on the configuration provided
