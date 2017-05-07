@@ -12,7 +12,7 @@ def call(body) {
 
 
     // now build, based on the configuration provided
-    node ('node-5') {
+    node (config.node) {
 
         //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: srvName]], submoduleCfg: [], userRemoteConfigs: [[url: gitUrl]]])
         //git url: "https://github.com/jenkinsci/${config.name}-plugin.git"
@@ -34,7 +34,8 @@ def call(body) {
         //sh "ls"
         //git url: "https://github.com/hyteer/${config.repoName}.git"
         echo "===Checkout service repo..."
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: config.srvName]], submoduleCfg: [], userRemoteConfigs: [[url: config.gitSrvUrl]]])
+        checkout([$class: 'GitSCM', branches: [[name: config.branch]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: config.srcDir], [$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true, recursiveSubmodules: true, reference: '', trackingSubmodules: false]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: config.credentialsId, url: config.gitSrvUrl]]])
+        //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: config.srvName]], submoduleCfg: [], userRemoteConfigs: [[url: config.gitSrvUrl]]])
         //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: config.srvName]], submoduleCfg: [], userRemoteConfigs: [[url: GIT_SRV_URL]]])
 
         //mail to: "...", subject: "${config.name} plugin build", body: "..."
