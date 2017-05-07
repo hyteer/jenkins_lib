@@ -19,7 +19,7 @@ def call(body) {
         stage ('Preparation') {
           sh 'rm -rf *'
           echo "==Checkout Ops repo..."
-          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: GIT_OPS_URL]]])
+          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: config.gitOpsUrl]]])
         }
 
         def testName = config.repoName
