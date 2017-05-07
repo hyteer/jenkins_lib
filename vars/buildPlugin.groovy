@@ -11,6 +11,8 @@ def call(body) {
 
         //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: srvName]], submoduleCfg: [], userRemoteConfigs: [[url: gitUrl]]])
         //git url: "https://github.com/jenkinsci/${config.name}-plugin.git"
+        def testName = config.repoName
+        println "TestName: ${testName}"
         echo "MyService: ${config.srvName}"
         echo "MyRepo: ${config.repoName}"
         //sh "ls"
