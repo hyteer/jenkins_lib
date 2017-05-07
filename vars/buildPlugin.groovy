@@ -14,7 +14,8 @@ def call(body) {
         def testName = config.repoName
         println "TestName: ${testName}"
         sh 'printenv'
-        sh '''echo "===YT testName is: ${testName}"'''
+        sh 'echo "Currdir:${PWD}"'
+        sh 'echo "YT-srv:${srvName}"'
         echo "MyService: ${config.srvName}"
         echo "MyRepo: ${config.repoName}"
         //sh "ls"
