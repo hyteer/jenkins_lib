@@ -12,7 +12,7 @@ def call(body) {
 
 
     // now build, based on the configuration provided
-    node (config.node) {
+    node (config.NODE) {
 
         //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: srvName]], submoduleCfg: [], userRemoteConfigs: [[url: gitUrl]]])
         //git url: "https://github.com/jenkinsci/${config.name}-plugin.git"
