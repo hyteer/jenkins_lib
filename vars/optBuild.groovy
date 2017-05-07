@@ -18,7 +18,7 @@ def call(body) {
         //git url: "https://github.com/jenkinsci/${config.name}-plugin.git"
         stage ('Preparation') {
           echo "==Checkout Ops repo..."
-          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/hyteer/flow.git']]])
+          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: GIT_OPS_URL]]])
         }
 
         def testName = config.repoName
@@ -31,7 +31,7 @@ def call(body) {
         //sh "ls"
         //git url: "https://github.com/hyteer/${config.repoName}.git"
         echo "===Checkout service repo..."
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'sample']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/hyteer/sample.git']]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: config.srvName]], submoduleCfg: [], userRemoteConfigs: [[url: GIT_SRV_URL]]])
         //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: config.srvName]], submoduleCfg: [], userRemoteConfigs: [[url: GIT_SRV_URL]]])
 
         //mail to: "...", subject: "${config.name} plugin build", body: "..."
