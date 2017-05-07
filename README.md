@@ -1,2 +1,2 @@
 # jenkins_lib
-Shared libirary
+Shared pipeline library
